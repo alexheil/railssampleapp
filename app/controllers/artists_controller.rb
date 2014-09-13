@@ -11,9 +11,8 @@ class ArtistsController < ApplicationController
   def new
     if logged_in?
       redirect_to current_artist
-    else
-      @artist = Artist.new
     end
+    @artist = Artist.new
   end
 
   def show
