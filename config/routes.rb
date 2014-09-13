@@ -1,18 +1,19 @@
 BeatsRealmApp::Application.routes.draw do
-  get "account_activations/edit"
   root "static_pages#home"
   get 'faq' => 'static_pages#faq'
   get 'contact' => 'static_pages#contact'
   get 'privacy_policy' => 'static_pages#privacy_policy'
   get 'terms_of_service' => 'static_pages#terms_of_service'
   get 'copyright_info' => 'static_pages#copyright_info'
-  get 'signup'  => 'users#new'
-  get    'login'    => 'sessions#new'
-  delete 'logout'   => 'sessions#destroy'
-  get 'discover' => 'users#index'
-  resources :users
+  get 'artist_signup' => 'artists#new'
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
+  get 'discover' => 'artists#index'
+  resources :artists
   resources :sessions, only: [:new, :create, :destroy]
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :microposts, only: [:create, :destroy]
 
 
 

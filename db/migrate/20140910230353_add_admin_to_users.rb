@@ -1,5 +1,5 @@
-class AddAdminToUsers < ActiveRecord::Migration
+class AddAdminToArtists < ActiveRecord::Migration
   def change
-    add_column :users, :admin, :boolean, default: false
+    add_column :artists, :admin, :boolean, default: false
   end
 end

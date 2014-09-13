@@ -1,5 +1,5 @@
-class AddPasswordDigestToUsers < ActiveRecord::Migration
+class AddPasswordDigestToArtists < ActiveRecord::Migration
   def change
-    add_column :users, :password_digest, :string
+    add_column :artists, :password_digest, :string
   end
 end

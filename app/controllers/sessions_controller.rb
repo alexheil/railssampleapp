@@ -1,19 +1,19 @@
 class SessionsController < ApplicationController
   def new
     if logged_in?
-      redirect_to current_user
+      redirect_to current_artist
     else
       render 'new'
     end
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      if user.activated?
-        log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_back_or user
+    artist = Artist.find_by(email: params[:session][:email].downcase)
+    if artist && artist.authenticate(params[:session][:password])
+      if artist.activated?
+        log_in artist
+        params[:session][:remember_me] == '1' ? remember(artist) : forget(artist)
+        redirect_back_or artist
       else
         message  = "Account not activated. "
         message += "Check your email for the activation link."
@@ -24,11 +24,12 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
+  end
 
   def destroy
-    forget(current_user)
-    session.delete(:user_id)
-    @current_user = nil
+    forget(current_artist)
+    session.delete(:artist_id)
+    @current_artist = nil
     redirect_to root_url
   end
 end

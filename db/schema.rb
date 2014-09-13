@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910235902) do
+ActiveRecord::Schema.define(version: 20140912222314) do
 
-  create_table "users", force: true do |t|
+  create_table "artists", force: true do |t|
     t.string   "username"
     t.string   "email"
     t.datetime "created_at"
@@ -30,8 +30,19 @@ ActiveRecord::Schema.define(version: 20140910235902) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "artists", ["email"], name: "index_artists_on_email", unique: true
+
+  create_table "microposts", force: true do |t|
+    t.text     "content"
+    t.integer  "artist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microposts", ["artist_id", "created_at"], name: "index_microposts_on_artist_id_and_created_at"
 
 end

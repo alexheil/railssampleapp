@@ -1,9 +1,9 @@
-class AddDetailsToUsers < ActiveRecord::Migration
+class AddDetailsToArtists < ActiveRecord::Migration
   def change
-    add_column :users, :location, :string
-    add_column :users, :genre, :string
-    add_column :users, :biography, :string
-    add_column :users, :sounds_like, :string
-    add_column :users, :members, :string
+    add_column :artists, :location, :string
+    add_column :artists, :genre, :string
+    add_column :artists, :biography, :string
+    add_column :artists, :sounds_like, :string
+    add_column :artists, :members, :string
   end
 end

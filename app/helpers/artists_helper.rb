@@ -1,4 +1,4 @@
-module UsersHelper
+module ArtistsHelper
 
   def music_genres
     [

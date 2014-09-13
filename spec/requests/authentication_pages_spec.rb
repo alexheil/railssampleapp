@@ -27,29 +27,29 @@ describe "Authentication" do
       end
 
       describe "with valid information" do
-        let(:user) { FactoryGirl.create(:user) }
+        let(:artist) { FactoryGirl.create(:artist) }
         before do
-          fill_in "Email",    with: user.email.upcase
-          fill_in "Password", with: user.password
+          fill_in "Email",    with: artist.email.upcase
+          fill_in "Password", with: artist.password
           click_button "Log in"
       end
 
-        it { should have_title(user.name) }
-        it { should have_link('profile',     href: user_path(user)) }
+        it { should have_title(artist.name) }
+        it { should have_link('profile',     href: artist_path(artist)) }
         it { should have_link('log out',    href: logout_path) }
         it { should_not have_link('log in', href: login_path) }
       end
 
       describe "with valid information" do
-        let(:user) { FactoryGirl.create(:user) }
+        let(:artist) { FactoryGirl.create(:artist) }
         before do
-          fill_in "Email",    with: user.email.upcase
-          fill_in "Password", with: user.password
+          fill_in "Email",    with: artist.email.upcase
+          fill_in "Password", with: artist.password
           click_button "Log in"
       end
 
-      it { should have_title(user.name) }
-      it { should have_link('profile',     href: user_path(user)) }
+      it { should have_title(artist.name) }
+      it { should have_link('profile',     href: artist_path(artist)) }
       it { should have_link('log out',    href: logout_path) }
       it { should_not have_link('log in', href: login_path) }
     end

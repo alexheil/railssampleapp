@@ -1,8 +1,4 @@
 class StaticPagesController < ApplicationController
-  before_action do
-   @user = current_user
-  end
-
   def home
   end
 

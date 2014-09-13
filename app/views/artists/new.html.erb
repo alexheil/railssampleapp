@@ -1,24 +1,24 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h1>sign up for an artist account</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+    <%= form_for(@artist) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :username %>
+      <%= f.label :username, "username" %> this will be your url // username.beatsrealm.com
       <%= f.text_field :username, class: 'form-control' %>
 
-      <%= f.label :artist_name, "Artist name" %>
+      <%= f.label :artist_name, "artist name" %>
       <%= f.text_field :artist_name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :email, "email" %>
       <%= f.text_field :email, class: 'form-control' %>
 
-      <%= f.label :password %>
+      <%= f.label :password, "password" %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.label :password_confirmation, "password confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.label :terms_of_service, class: "checkbox inline" do %>

@@ -1,0 +1,3 @@
+<h1><%= @artist.artist_name %></h1>
+<span><%= link_to "view my profile", @artist %></span>
+<span><%= pluralize(@artist.microposts.count, "micropost") %></span>

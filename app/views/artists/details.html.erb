@@ -1,9 +1,9 @@
-<% provide(:title, @user.name) %>
+<% provide(:title, @artist.artist_name) %>
 <h1>Give your fans some details</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for(@artist) do |f| %>
 
       <%= f.label :genre %>
       <%= f.select(:genre, options_for_select(music_genres)) %>
@@ -12,7 +12,7 @@
       <%= f.text_field :location, class: 'form-control' %>
 
       <%= f.label :sounds_like %>
-      <%= f.text_feild :sounds_like, class: 'form-control' %>
+      <%= f.text_field :sounds_like, class: 'form-control' %>
 
       <%= f.label :biography %>
       <%= f.text_area :biography, class: 'form-control'%>

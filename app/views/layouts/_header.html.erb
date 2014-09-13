@@ -7,18 +7,16 @@
         <% if logged_in? %>
           <li id="fat-menu" class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= "#{@user.artist_name}" %> <b class="caret"></b>
+              <%= "#{current_artist.artist_name}" %> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "profile", current_user %></li>
-              <li><%= link_to "settings", edit_user_path(current_user) %></li>
-              <li>
-                <%= link_to "log out", logout_path, method: "delete" %>
-              </li>
+              <li><%= link_to "profile", current_artist %></li>
+              <li><%= link_to "settings", edit_artist_path(current_artist) %></li>
+              <li><%= link_to "log out", logout_path, method: "delete" %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "artist signup", signup_path %></li>
+          <li><%= link_to "artist signup", artist_signup_path %></li>
           <li><%= link_to "log in", login_path %></li>
         <% end %>
       </ul>
