@@ -6,15 +6,13 @@ BeatsRealmApp::Application.routes.draw do
   get 'terms_of_service' => 'static_pages#terms_of_service'
   get 'copyright_info' => 'static_pages#copyright_info'
   get 'artist_signup' => 'artists#new'
-  get 'login' => 'sessions#new'
-  delete 'logout' => 'sessions#destroy'
+  get 'login' => 'artist_sessions#new'
+  delete 'logout' => 'artist_sessions#destroy'
   get 'discover' => 'artists#index'
-  resources :artists do
-    get 'details'
-  end
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :account_activations, only: [:edit]
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :artists
+  resources :artist_sessions, only: [:new, :create, :destroy]
+  resources :artist_account_activations, only: [:edit]
+  resources :artist_password_resets, only: [:new, :create, :edit, :update]
   resources :microposts, only: [:create, :destroy]
 
 

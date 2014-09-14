@@ -1,4 +1,4 @@
-class PasswordResetsController < ApplicationController
+class ArtistPasswordResetsController < ApplicationController
   before_action :get_artist, only: [:edit, :update]
 
   def new

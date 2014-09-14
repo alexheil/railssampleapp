@@ -46,6 +46,13 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def details
+    @artist = Artist.find(params[:id])
+    @micropost = current_artist.microposts.build if logged_in?
+    @microposts = @artist.microposts.paginate(page: params[:page])
+    redirect_to root_url and return unless @artist.activated?
+  end
+
   def destroy
     Artist.find(params[:id]).destroy
     flash[:success] = "Artist deleted"

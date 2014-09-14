@@ -2,4 +2,4 @@ Hi <%= @artist.artist_name %>,
 
 Welcome to the Beats Realm! Click on the link below to activate your account:
 
-<%= edit_account_activation_url(@artist.activation_token, email: @artist.email) %>
+<%= edit_artist_account_activation_url(@artist.activation_token, email: @artist.email) %>

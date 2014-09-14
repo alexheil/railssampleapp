@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class ArtistSessionsController < ApplicationController
   def new
     if logged_in?
       redirect_to current_artist

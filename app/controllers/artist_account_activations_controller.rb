@@ -1,4 +1,4 @@
-class AccountActivationsController < ApplicationController
+class ArtistAccountActivationsController < ApplicationController
   def edit
     artist = Artist.find_by(email: params[:email])
     if artist && !artist.activated? && artist.authenticated?(:activation, params[:id])
