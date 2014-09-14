@@ -1,7 +1,7 @@
 class AccountActivationsController < ApplicationController
   def edit
-    artist = Artist.find_by(activation_token: params[:id])
-    if artist
+    artist = Artist.find_by(email: params[:email])
+    if artist && !artist.activated? && artist.authenticated?(:activation, params[:id])
       artist.activate
       flash[:success] = "Account activated!"
       log_in artist

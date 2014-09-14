@@ -2,8 +2,7 @@ class Artist < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
-  before_save :downcase_email
-  before_save :downcase_username
+  before_save :downcase_email, :downcase_username
   validates :username, presence: true, length: { maximum: 50 }
   validates :artist_name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -82,7 +81,7 @@ class Artist < ActiveRecord::Base
 
     # Creates and assigns the activation token and digest.
     def create_activation_digest
-      self.activation_token  = Artist.new_token
+      self.activation_token = Artist.new_token
       self.activation_digest = Artist.digest(activation_token)
     end
 end
