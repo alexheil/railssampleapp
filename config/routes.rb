@@ -9,7 +9,9 @@ BeatsRealmApp::Application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
   get 'discover' => 'artists#index'
-  resources :artists
+  resources :artists do
+    get 'details'
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
