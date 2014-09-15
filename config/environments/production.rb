@@ -89,4 +89,14 @@ BeatsRealmApp::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  Paperclip.options[:command_path] = 'C:\ImageMagick'
+  Paperclip.options[:swallow_stderr] = false
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => 'artistcoverimage'
+  }
+}
 end

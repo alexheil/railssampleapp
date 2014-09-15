@@ -1,0 +1,6 @@
+development:
+  access_key_id: AKIAISIK4QRJQ435JDAA
+  secret_access_key: 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
+production:
+  access_key_id: AKIAISIK4QRJQ435JDAA
+  secret_access_key: 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

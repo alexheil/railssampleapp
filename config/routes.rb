@@ -1,4 +1,5 @@
 BeatsRealmApp::Application.routes.draw do
+  get "artist_bios/edit"
   root "static_pages#home"
   get 'faq' => 'static_pages#faq'
   get 'contact' => 'static_pages#contact'
@@ -9,7 +10,12 @@ BeatsRealmApp::Application.routes.draw do
   get 'login' => 'artist_sessions#new'
   delete 'logout' => 'artist_sessions#destroy'
   get 'discover' => 'artists#index'
-  resources :artists
+  resources :artists do
+    get 'create_bio'
+    get 'update_bio'
+    get 'bio'
+  end
+  resources :artist_bios, only: [:edit, :update]
   resources :artist_sessions, only: [:new, :create, :destroy]
   resources :artist_account_activations, only: [:edit]
   resources :artist_password_resets, only: [:new, :create, :edit, :update]

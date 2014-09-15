@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912222314) do
+ActiveRecord::Schema.define(version: 20140914213800) do
 
   create_table "artists", force: true do |t|
     t.string   "username"
@@ -28,10 +28,14 @@ ActiveRecord::Schema.define(version: 20140912222314) do
     t.string   "artist_name"
     t.boolean  "admin"
     t.string   "activation_digest"
-    t.boolean  "activated",         default: false
+    t.boolean  "activated",              default: false
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
   end
 
   add_index "artists", ["email"], name: "index_artists_on_email", unique: true

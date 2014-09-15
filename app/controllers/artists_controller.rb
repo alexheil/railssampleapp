@@ -36,6 +36,14 @@ class ArtistsController < ApplicationController
   def edit
   end
 
+  def create_bio
+    @artist = Artist.find(params[:artist_id])
+  end
+
+  def edit_bio
+    @artist = Artist.find(params[:artist_id])
+  end
+
   def update
     @artist = Artist.find(params[:id])
     if @artist.update_attributes(artist_params)
@@ -44,13 +52,6 @@ class ArtistsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def details
-    @artist = Artist.find(params[:id])
-    @micropost = current_artist.microposts.build if logged_in?
-    @microposts = @artist.microposts.paginate(page: params[:page])
-    redirect_to root_url and return unless @artist.activated?
   end
 
   def destroy
@@ -62,7 +63,7 @@ class ArtistsController < ApplicationController
   private
 
     def artist_params
-      params.require(:artist).permit(:username, :email, :password, :password_confirmation, :genre, :location, :sounds_like, :biography, :artist_name, :terms_of_service)
+      params.require(:artist).permit(:username, :email, :password, :password_confirmation, :genre, :location, :sounds_like, :biography, :artist_name, :terms_of_service, :cover_img)
     end
 
     def correct_artist

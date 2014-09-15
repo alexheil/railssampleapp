@@ -1,10 +1,9 @@
 <% provide(:title, @artist.artist_name) %>
-<h1>Update your profile</h1>
+<h1>Create a bio</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@artist, :html => { :multipart => true }) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+    <%= form_for(@artist) do |f| %>
 
       <%= f.label :genre %>
       <%= f.select(:genre, options_for_select(music_genres)) %>
@@ -18,10 +17,13 @@
       <%= f.label :biography %>
       <%= f.text_area :biography, class: 'form-control'%>
 
-      <%= f.label :cover_img %>
+      <%= f.label :cover_img, "cover image" %><br />
       <%= f.file_field :cover_img %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <div class="col-md-6">
+        <%= f.submit "Finish", class: "btn btn-primary" %>
+        <%= link_to "skip", current_artist, class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -1,15 +1,17 @@
 class Artist < ActiveRecord::Base
+  has_attached_file :cover_img, styles: { cover: '975x366>' }
   has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save :downcase_email, :downcase_username
-  validates :username, presence: true, length: { maximum: 50 }
-  validates :artist_name, presence: true, length: { maximum: 50 }
+  validates :username, presence: true, length: { maximum: 50 }, if: :username
+  validates :artist_name, presence: true, length: { maximum: 50 }, if: :artist_name
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, if: :email
   has_secure_password
-  validates :password, length: { minimum: 6 }
-  validates :terms_of_service, acceptance: true
+  validates :password, length: { minimum: 6 }, if: :password
+  validates :terms_of_service, acceptance: true, if: :terms_of_service
+  validates_attachment_content_type :cover_img, :content_type => ["image/jpg", "image/jpeg", "image/png"], if: :cover_img
 
   # Returns the hash digest of the given string.
   def Artist.digest(string)
