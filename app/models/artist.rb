@@ -11,7 +11,7 @@ class Artist < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, if: :password
   validates :terms_of_service, acceptance: true, if: :terms_of_service
-  validates_attachment_content_type :cover_img, :content_type => ["image/jpg", "image/jpeg", "image/png"], if: :cover_img
+  validates_attachment_content_type :cover_img, :content_type => ["image/jpg", "image/jpeg", "image/png"], if: :cover_img_content_type
 
   # Returns the hash digest of the given string.
   def Artist.digest(string)
