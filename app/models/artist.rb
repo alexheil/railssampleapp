@@ -1,5 +1,5 @@
 class Artist < ActiveRecord::Base
-  has_attached_file :cover_img, styles: { cover: '975x366>' }
+  has_attached_file :cover_img, :styles => { :cover => "975x366>" }
   has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest

@@ -31,7 +31,6 @@ BeatsRealmApp::Application.configure do
   config.assets.debug = true
 
   Paperclip.options[:command_path] = 'C:\ImageMagick'
-  Paperclip.options[:swallow_stderr] = false
 
   config.paperclip_defaults = {
   :storage => :s3,
