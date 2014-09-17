@@ -4,12 +4,14 @@ class Artist < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save :downcase_email, :downcase_username
-  validates :username, presence: true, length: { maximum: 50 }, if: :username
-  validates :artist_name, presence: true, length: { maximum: 50 }, if: :artist_name
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_PASSWORD_REGEX = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}/
+  VALID_USERNAME_REGEX = /\A[\S]+\Z/i
+  validates :username, presence: true, length: { maximum: 50 }, format: { with: VALID_USERNAME_REGEX }, if: :username
+  validates :artist_name, presence: true, length: { maximum: 50 }, if: :artist_name
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }, if: :email
   has_secure_password
-  validates :password, length: { minimum: 6 }, if: :password
+  validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD_REGEX }, if: :password
   validates :terms_of_service, acceptance: true, if: :terms_of_service
   validates_attachment_content_type :cover_img, :content_type => ["image/jpg", "image/jpeg", "image/png"], if: :cover_img_content_type
 

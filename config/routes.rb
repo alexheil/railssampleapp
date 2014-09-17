@@ -12,7 +12,7 @@ BeatsRealmApp::Application.routes.draw do
   get 'discover' => 'artists#index'
   resources :artists do
     get 'create_bio'
-    get 'update_bio'
+    get 'edit_bio'
     get 'bio'
   end
   resources :artist_bios, only: [:edit, :update]

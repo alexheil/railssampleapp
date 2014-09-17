@@ -6,7 +6,7 @@
     <%= form_for(@artist) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :username, "username" %> this will be your url // username.beatsrealm.com
+      <%= f.label :username, "username" %> // this will be your url // username.beatsrealm.com
       <%= f.text_field :username, class: 'form-control' %>
 
       <%= f.label :artist_name, "artist name" %>
@@ -15,7 +15,7 @@
       <%= f.label :email, "email" %>
       <%= f.text_field :email, class: 'form-control' %>
 
-      <%= f.label :password, "password" %>
+      <%= f.label :password, "password" %> // one uppercase // one lowercase // one number // at least six characters
       <%= f.password_field :password, class: 'form-control' %>
 
       <%= f.label :password_confirmation, "password confirmation" %>
@@ -23,7 +23,7 @@
 
       <%= f.label :terms_of_service, class: "checkbox inline" do %>
       <%= f.check_box :terms_of_service %>
-      <span>Please accept the <%= link_to "Terms of Service", terms_of_service_url %>.</span>
+      <span>please accept the <%= link_to "terms of service", terms_of_service_url %></span>
       <% end %>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
